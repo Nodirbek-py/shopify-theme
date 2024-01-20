@@ -1,0 +1,28 @@
+<link type="text/css" href="{{ 'header.css' | asset_url }}" rel="stylesheet">
+<header>
+    <div class="header-content">
+        <div class="header-side">
+            <h1 class="logo">{{ shop.name }}</h1>
+            <ul class="nav">
+                {% for link in linklists.main-menu.links %}
+
+                {% if link.links.size > 0 %}
+                <li class="nav-item dropdown">{{ link.title | link_to: link.url }}
+                    <ul class="nav-dropdown">
+                        <div class="dropdown-content">
+                            {% for item in link.links %}
+                            <li class="dropdown-item">{{ item.title | link_to: item.url }}</li>
+                            {% endfor %}
+                        </div>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">{{ link.title | link_to: link.url }}</li>
+                {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="header-side"></div>
+    </div>
+</header>
