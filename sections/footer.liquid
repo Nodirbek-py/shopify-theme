@@ -1,0 +1,36 @@
+<link type="text/css" href="{{ 'footer.css' | asset_url }}" rel="stylesheet">
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h1 class="footer-logo">{{ shop.name }}</h1>
+            <p class="footer-slogan">{{ shop.brand.slogan }}</p>
+            <div class="footer-socials">
+                <p>Socials</p>
+            </div>
+        </div>
+        <div class="footer-column">
+            <ul class="footer-nav">
+                {% for link in linklists.footer.links %}
+                <li class="footer-nav-item">{{ link.title | link_to: link.url }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="footer-column">
+            <ul class="footer-nav">
+                {% for link in linklists.footer.links %}
+                <li class="footer-nav-item">{{ link.title | link_to: link.url }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="footer-column">
+            <ul class="footer-nav">
+                {% for link in linklists.footer.links %}
+                <li class="footer-nav-item">{{ link.title | link_to: link.url }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="footer-ending">{{ shop.name }} © | All rights reserved</p>
+    </div>
+</footer>

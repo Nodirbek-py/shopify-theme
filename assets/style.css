@@ -9,3 +9,9 @@ body {
   font-family: "DM Sans", sans-serif;
   background: #fff;
 }
+
+main {
+  margin-top: 72px;
+  min-height: 100vh;
+  height: auto;
+}

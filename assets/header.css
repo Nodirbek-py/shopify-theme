@@ -5,6 +5,8 @@ header {
   position: fixed;
   width: 100%;
   z-index: 100;
+  top: 0;
+  left: 0;
 }
 
 .header-content {
@@ -26,8 +28,11 @@ header {
 
 .logo {
   font-family: "DM Sans", sans-serif;
+  color: #000;
   font-size: 32px;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -4px;
 }
 
 .nav {
