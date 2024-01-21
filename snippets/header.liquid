@@ -23,6 +23,12 @@
                 {% endfor %}
             </ul>
         </div>
-        <div class="header-side"></div>
+        <div class="header-side">
+            <ul class="nav">
+                {% for link in linklists.right-menu.links %}
+                <li class="nav-item">{{ link.title | link_to: link.url }}</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </header>
