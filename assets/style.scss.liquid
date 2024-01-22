@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,300;9..40,700&display=swap");
+
+/* Variables */
+
+$width: {{ settings.page_width }}px;
+$break_point: 1024px;
+$bgColor: {{ settings.bg_color }};
+$textColor: {{ settings.text_color }};
+$lightColor: {{ settings.light_bg }};
+$darkColor: {{ settings.dark_bg }};
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a, input, button, textarea {
+  font-family: "DM Sans", sans-serif;
+  color: $textColor;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  color: $textColor;
+  background: $bgColor;
+}
+
+main {
+  margin-top: 72px;
+  min-height: 100vh;
+  height: auto;
+}
+
+.page-width {
+  max-width: $width;
+  width: calc(100% - 48px);
+  margin: 0 auto;
+
+  @media screen and (max-width: $break_point) {
+    width: calc(100% - 24px);
+  }
+}
