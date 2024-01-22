@@ -1,36 +1,53 @@
-<link type="text/css" href="{{ 'footer.css' | asset_url }}" rel="stylesheet">
-<footer>
-    <div class="footer-content">
-        <div class="footer-column">
-            <h1 class="footer-logo">{{ shop.name }}</h1>
-            <p class="footer-slogan">{{ shop.brand.slogan }}</p>
-            <div class="footer-socials">
-                <p>Socials</p>
-            </div>
-        </div>
-        <div class="footer-column">
-            <ul class="footer-nav">
-                {% for link in linklists.footer.links %}
-                <li class="footer-nav-item">{{ link.title | link_to: link.url }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="footer-column">
-            <ul class="footer-nav">
-                {% for link in linklists.footer.links %}
-                <li class="footer-nav-item">{{ link.title | link_to: link.url }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="footer-column">
-            <ul class="footer-nav">
-                {% for link in linklists.footer.links %}
-                <li class="footer-nav-item">{{ link.title | link_to: link.url }}</li>
-                {% endfor %}
-            </ul>
+{% comment %} Styling Start {% endcomment %}
+
+<link type="text/css" href="{{ 'footer.scss.css' | asset_url }}" rel="stylesheet">
+
+{% comment %} Styling End {% endcomment %}
+{% comment %} Layout Start {% endcomment %}
+
+<div class="footer-content page-width">
+    <div class="footer-column">
+        <h1 class="footer-logo">{{ shop.name }}</h1>
+        <p class="footer-slogan">{{ shop.brand.slogan }}</p>
+        <div class="footer-socials">
+            <p>Socials</p>
         </div>
     </div>
-    <div class="footer-bottom">
-        <p class="footer-ending">{{ shop.name }} © | All rights reserved</p>
+    <div class="footer-column">
+        <ul class="footer-nav">
+            {% for link in linklists.footer.links %}
+            <li class="footer-nav-item">{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+        </ul>
     </div>
-</footer>
+    <div class="footer-column">
+        <ul class="footer-nav">
+            {% for link in linklists.footer.links %}
+            <li class="footer-nav-item">{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="footer-column">
+        <ul class="footer-nav">
+            {% for link in linklists.footer.links %}
+            <li class="footer-nav-item">{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="footer-bottom page-width">
+    <p class="footer-ending">{{ shop.name }} © | All rights reserved</p>
+</div>
+
+{% comment %} Layout End {% endcomment %}
+{% comment %} Schema Start {% endcomment %}
+
+{% schema %}
+{
+"name": "Footer",
+"tag": "footer",
+"settings": [
+]
+}
+{% endschema %}
+{% comment %} Schema End {% endcomment %}
