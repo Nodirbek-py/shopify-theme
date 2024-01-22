@@ -1,5 +1,9 @@
+$textColor: {{ settings.text_color }};
+$lightColor: {{ settings.light_bg }};
+$darkColor: {{ settings.dark_bg }};
+
 footer {
-  background: #f0f0f0;
+  background: $lightColor;
 }
 
 .footer-content {
@@ -11,9 +15,7 @@ footer {
 
 .footer-bottom,
 .footer-content {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 50px 24px;
+  padding: 50px 0;
 }
 
 .footer-column:first-child {
@@ -23,7 +25,7 @@ footer {
 }
 
 .footer-logo {
-  color: #000;
+  color: $textColor;
   font-size: 32px;
   font-weight: 700;
   text-transform: uppercase;
@@ -32,7 +34,7 @@ footer {
 
 .footer-slogan,
 .footer-ending {
-  color: #00000099;
+  color: $textColor;
   font-size: 14px;
   font-weight: 300;
   line-height: 22px;
@@ -46,7 +48,7 @@ footer {
 }
 
 .footer-nav-item a {
-  color: #00000099;
+  color: $textColor;
   font-size: 16px;
   font-weight: 300;
   line-height: 19px;
