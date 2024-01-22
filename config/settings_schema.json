@@ -1,0 +1,53 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Shoppy",
+    "theme_author": "Nodirbek Vositov",
+    "theme_version": "1.0.0",
+    "theme_support_url": "https://github.com/nodirbek-py/shopify-theme",
+    "theme_documentation_url": "https://github.com/nodirbek-py/shopify-theme"
+  },
+  {
+    "name": "Page Settings",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Page Content Width",
+        "default": 1440,
+        "min": 1200,
+        "max": 1560,
+        "step": 40
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#111111"
+      },
+      {
+        "type": "color",
+        "id": "dark_bg",
+        "label": "Dark color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "light_bg",
+        "label": "Light color",
+        "default": "#f0f0f0"
+      }
+    ]
+  }
+]
