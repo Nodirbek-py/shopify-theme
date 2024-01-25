@@ -1,0 +1,109 @@
+{% comment %} Styling Start {% endcomment %}
+
+{% comment %} Styling End {% endcomment %}
+{% comment %} Layout Start {% endcomment %}
+<h1>This is banner dude</h1>
+{% comment %} Layout End {% endcomment %}
+{% comment %} Scheme Start {% endcomment %}
+
+{% schema %}
+{
+  "name": "Banner",
+  "tag": "section",
+  "class": "banner-wrapper",
+  "limit": 1,
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "name": "Slides",
+      "type": "text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "slide-title",
+          "label": "Slide Title"
+        },
+        {
+          "type": "richtext",
+          "id": "slide-subtitle",
+          "label": "Slide Subtitle"
+        },
+        {
+          "type": "image_picker",
+          "id": "slide-image",
+          "info": "Desired Proportion is for images 16:9",
+          "label": "Slide Image"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "radio",
+      "id": "vertical-position",
+      "options": [
+        {
+          "label": "Top",
+          "value": "top"
+        },
+        {
+          "label": "Middle",
+          "value": "middle"
+        },
+        {
+          "label": "Bottom",
+          "value": "bottom"
+        }
+      ],
+      "label": "Vertical Position",
+      "info": "Vertical positioning for the texts on slides"
+    },
+    {
+      "type": "radio",
+      "id": "horizontal-position",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Middle",
+          "value": "middle"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "label": "Horizontal Position",
+      "info": "Horizontal positioning for the texts on slides"
+    },
+    {
+      "type": "radio",
+      "id": "slide-height",
+      "label": "Height of Banner",
+      "options": [
+        {
+          "label": "Small",
+          "value": "50"
+        },
+        {
+          "label": "Medium",
+          "value": "75"
+        },
+        {
+          "label": "Full Screen",
+          "value": "100"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default Banner"
+    }
+  ]
+}
+{% endschema %}
+
+{% comment %} Scheme End {% endcomment %}
