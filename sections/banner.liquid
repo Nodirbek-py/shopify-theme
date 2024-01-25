@@ -1,0 +1,240 @@
+{% comment %} Styling Start {% endcomment %}
+<link type="text/css" href="{{ 'banner.scss.css' | asset_url }}" rel="stylesheet">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<style>
+  .swiper {
+      height: calc({{ section.settings.slide-height }}vh - 72px);
+  }
+
+  .slide-text-wrapper {
+    justify-content: {{ section.settings.horizontal-position  }};
+    align-items: {{ section.settings.vertical-position }};
+  }
+
+  /* .slide-text h1, .slide-text h2, .slide-text h3, .slide-text h4, .slide-text h5, */
+
+  .slide-text {
+    {%  if section.settings.horizontal-position == 'center' %}
+      align-items: center;
+    {% elsif section.settings.horizontal-position == 'right' %}
+      align-items: flex-end;
+    {% endif %}
+  }
+</style>
+
+{% comment %} Styling End {% endcomment %}
+{% comment %} Layout Start {% endcomment %}
+{% assign count = 0 %}
+{% for block in section.blocks %}
+  {% assign count = count | plus: 1 %}
+{% endfor %}
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'slide' %}
+          <div
+            class="swiper-slide"
+            {{ block.shopify_attributes }}
+            style="background-image: url({{ block.settings.image |  image_url: width: 1024 }}); background-size: cover; background-position: center;"
+          >
+            <div class="slide-text-wrapper">
+              <div class="slide-text" style="color: {{ block.settings.slide-textcolor }}">
+                {% comment %} {{ block.settings['slide-content'] }} {% endcomment %}
+                <h2 style="color: {{ block.settings.slide-textcolor }}; font-size: {{ block.settings.title-size }}px;">
+                  {{ block.settings.slide_title | strip_html | strip_newlines }}
+                </h2>
+                <p style="color: {{ block.settings.slide-textcolor }}; font-size: {{ block.settings.subtitle-size }}px;">
+                  {{ block.settings.slide_subtitle | strip_html | strip_newlines }}
+                </p>
+              </div>
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+  {% if count > 1 %}
+    {% if section.settings['show-pagination'] == true %}
+      <div class="swiper-pagination"></div>
+    {% endif %}
+
+    {% if section.settings['show-arrow'] == true %}
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    {% endif %}
+
+    {% if section.settings['show-scrollbar'] %}
+      <div class="swiper-scrollbar"></div>
+    {% endif %}
+  {% endif %}
+</div>
+{% comment %} Layout End {% endcomment %}
+{% comment %} Scheme Start {% endcomment %}
+
+{% schema %}
+{
+  "name": "Banner",
+  "tag": "section",
+  "class": "banner-wrapper",
+  "limit": 1,
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Slide Title"
+        },
+        {
+          "type": "range",
+          "max": 100,
+          "min": 32,
+          "label": "Title Size",
+          "id": "title-size",
+          "default": 32,
+          "step": 1
+        },
+        {
+          "type": "richtext",
+          "id": "slide_subtitle",
+          "label": "Slide Subtitle"
+        },
+        {
+          "type": "range",
+          "max": 100,
+          "min": 18,
+          "label": "Subtitle Size",
+          "id": "subtitle-size",
+          "default": 18,
+          "step": 1
+        },
+        {
+          "type": "color",
+          "id": "slide-textcolor",
+          "label": "Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "info": "Desired Proportion for images is 16:9",
+          "label": "Slide Image"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "radio",
+      "id": "vertical-position",
+      "options": [
+        {
+          "label": "Top",
+          "value": "start"
+        },
+        {
+          "label": "Middle",
+          "value": "center"
+        },
+        {
+          "label": "Bottom",
+          "value": "end"
+        }
+      ],
+      "label": "Vertical Position",
+      "info": "Vertical positioning for the texts on slides"
+    },
+    {
+      "type": "radio",
+      "id": "horizontal-position",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Middle",
+          "value": "center"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "label": "Horizontal Position",
+      "info": "Horizontal positioning for the texts on slides"
+    },
+    {
+      "type": "radio",
+      "id": "slide-height",
+      "label": "Height of Banner",
+      "options": [
+        {
+          "label": "Small",
+          "value": "50"
+        },
+        {
+          "label": "Medium",
+          "value": "75"
+        },
+        {
+          "label": "Full Screen",
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show-arrow",
+      "label": "Show Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show-pagination",
+      "label": "Show pagination",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show-scrollbar",
+      "label": "Show scrollbar",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default Banner"
+    }
+  ]
+}
+{% endschema %}
+{% comment %} Scheme End {% endcomment %}
+
+{% javascript %}
+  window.addEventListener('load', function () {
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+  });
+{% endjavascript %}
