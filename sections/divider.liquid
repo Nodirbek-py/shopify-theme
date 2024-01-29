@@ -1,0 +1,56 @@
+{% comment %} Styling Start {% endcomment %}
+
+<style>
+  hr {
+      margin: 0 auto;
+      background: {{ section.settings.divider-color }};
+      width: {{ section.settings.divider-size }}%;
+  }
+
+  @media screen and (max-width: 768px) {
+    hr {
+        width: 100% !important;
+    }
+  }
+</style>
+
+{% comment %} Styling End {% endcomment %}
+
+{% comment %} Layout Start {% endcomment %}
+
+<div class="page-width">
+  <hr>
+</div>
+
+{% comment %} Layout End {% endcomment %}
+
+{% comment %} Schema Start {% endcomment %}
+
+{% schema %}
+{
+  "name": "Divider",
+  "settings": [
+    {
+      "label": "Divider Size",
+      "type": "range",
+      "min": 10,
+      "max": 100,
+      "default": 50,
+      "step": 5,
+      "id": "divider-size"
+    },
+    {
+      "type": "color_background",
+      "label": "Divider Color",
+      "default": "#ededed",
+      "id": "divider-color"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Divider"
+    }
+  ]
+}
+{% endschema %}
+{% comment %} Schema End {% endcomment %}
