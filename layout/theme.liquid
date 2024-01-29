@@ -1,16 +1,20 @@
 <html>
-
-<head>
+  <head>
     {{ content_for_header }}
-    <link type="text/css" href="{{ 'style.scss.css' | asset_url }}" rel="stylesheet">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    >
 
-<body>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link type="text/css" href="{{ 'style.scss.css' | asset_url }}" rel="stylesheet">
+  </head>
+
+  <body>
     {% section 'header' %}
     <main>
-        {{ content_for_layout }}
+      {{ content_for_layout }}
     </main>
     {% section 'footer' %}
-</body>
-
+  </body>
 </html>
