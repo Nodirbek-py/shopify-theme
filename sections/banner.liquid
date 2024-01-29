@@ -1,11 +1,5 @@
 {% comment %} Styling Start {% endcomment %}
 <link type="text/css" href="{{ 'banner.scss.css' | asset_url }}" rel="stylesheet">
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
->
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <style>
   .swiper {
@@ -47,7 +41,6 @@
           >
             <div class="slide-text-wrapper">
               <div class="slide-text" style="color: {{ block.settings.slide-textcolor }}">
-                {% comment %} {{ block.settings['slide-content'] }} {% endcomment %}
                 <h2 style="color: {{ block.settings.slide-textcolor }}; font-size: {{ block.settings.title-size }}px;">
                   {{ block.settings.slide_title | strip_html | strip_newlines }}
                 </h2>
@@ -214,7 +207,7 @@
   ],
   "presets": [
     {
-      "name": "Default Banner"
+      "name": "Banner"
     }
   ]
 }
