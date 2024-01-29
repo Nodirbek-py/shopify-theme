@@ -1,0 +1,84 @@
+{% comment %} Styling Start {% endcomment %}
+<link type="text/css" href="{{ 'product-detail.scss.css' | asset_url }}" rel="stylesheet">
+{% comment %} Stying End {% endcomment %}
+{% comment %} Layout Start {% endcomment %}
+
+<div class="product-detail-wrapper">
+  <div class="{%  if section.settings.gallery-type == 'grid' %} product-gallery grid {% else %} product-gallery select {% endif %}">
+    {% if section.settings['gallery-type'] == 'grid' %}
+      {% for image in product.images %}
+        <img src="{{ image.src |  image_url: width: 768 }}" class="product-image">
+      {% endfor %}
+    {% else %}
+      <div class="gallery-side">
+        {% for image in product.images %}
+          <img style="height: auto !important;" src="{{ image.src |  image_url: width: 768 }}" class="product-image">
+        {% endfor %}
+      </div>
+      <div class="gallery-main">
+        {% for image in product.images limit: 1 %}
+          <img src="{{ image.src |  image_url: width: 768 }}" class="product-image">
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="product-info">
+    <h1 class="product-title">{{ product.title }}</h1>
+    <h3 class="product-price">{{ product.price | money_with_currency }}</h3>
+    <div class="product-description">
+      {{ product.description }}
+    </div>
+    {% for option in product.options_with_values %}
+      <div class="product-option-wrapper">
+        <hr>
+        <p class="option-name">Select {{ option.name }}</p>
+        <div class="product-value-wrapper">
+          {% for value in option.values %}
+            <button class="option-value">{{ value }}</button>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    <hr>
+    <div class="add-2-cart">
+      <div class="quantity-update">
+        <button>-</button>
+        <span>0</span>
+        <button>+</button>
+      </div>
+      <button>Add to cart</button>
+    </div>
+  </div>
+</div>
+
+{% comment %} Layout End {% endcomment %}
+{% comment %} Schema Start {% endcomment %}
+{% schema %}
+{
+  "name": "Product Detail",
+  "tag": "section",
+  "class": "product-detail page-width",
+  "blocks": [],
+  "settings": [
+    {
+      "type": "radio",
+      "label": "Product Gallery Type",
+      "id": "gallery-type",
+      "options": [
+        {
+          "label": "Equally distributed grid",
+          "value": "grid"
+        },
+        { "label": "Grid with one big image", "value": "selectable" }
+      ],
+      "default": "grid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Detail"
+    }
+  ]
+}
+{% endschema %}
+{% comment %} Schema End {% endcomment %}
